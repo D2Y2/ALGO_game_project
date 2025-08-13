@@ -1,0 +1,42 @@
+# Git ignore for Unity projects
+# Created by https://www.toptal.com/developers/gitignore/api/unity
+
+# Unity
+.DS_Store
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.meta
+*.log
+*.txt
+*.tmp
+
+# Visual Studio
+.vs/
+bin/
+obj/
+
+# Rider
+.idea/
+
+# Library and Temp
+Library/
+Temp/
+obj/
+Build/
+build/
+UserSettings/
+MemoryCaptures/
+AssetStoreTools/
+Packages/
+LocalPackages/
+
+# Optional: Uncomment if you don't want to track the Generated folder created by DOTS/ECS
+# Generated/
