@@ -13,6 +13,7 @@
 *.booproj
 *.svd
 *.pdb
+*.meta
 *.log
 *.txt
 *.tmp
