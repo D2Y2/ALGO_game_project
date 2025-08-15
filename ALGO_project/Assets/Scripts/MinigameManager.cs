@@ -17,9 +17,8 @@ public class MinigameManager : MonoBehaviour
 
     [Header("Game Settings")]
     public KeyCode actionKey = KeyCode.Space; // 플레이어 입력 키
-    public float successZoneWidth = 100f;   // 성공 존의 너비
-    public int maxTraversals = 4;           // 최대 이동 횟수 (편도)
-    private int currentTraversals;          // 현재 이동 횟수
+    public float minigameDuration = 5f;     // 미니게임 총 진행 시간
+    private float gameTimer;                // 게임 타이머
     private bool isGameActive = false;
 
     private float backgroundBarWidth;       // 배경 바의 실제 너비
@@ -36,17 +35,14 @@ public class MinigameManager : MonoBehaviour
         backgroundBarWidth = backgroundBar.rect.width;
         movingElementHalfWidth = movingElement.rect.width / 2f;
 
-        // 성공 존 너비 설정
-        successZone.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, successZoneWidth);
-
         // 초기 위치 설정 (중앙)
         movingElement.anchoredPosition = Vector2.zero;
-        currentXPosition = -450; // 시작 위치를 -450으로 설정하여 왼쪽 맨 끝에서 시작
+        currentXPosition = 0; // 시작 위치를 0으로 설정하여 중앙에서 시작
 
         // 초기 방향 설정 (랜덤)
         moveDirection = Random.Range(0, 2) * 2 - 1; // 1 또는 -1
 
-        currentTraversals = -1;
+        gameTimer = minigameDuration;
         resultText.text = "";
         isGameActive = true;
 
@@ -59,6 +55,7 @@ public class MinigameManager : MonoBehaviour
 
         HandleMovingElementMovement();
         HandlePlayerInput();
+        UpdateGameTimer();
     }
 
     void HandleMovingElementMovement()
@@ -70,30 +67,17 @@ public class MinigameManager : MonoBehaviour
         float maxX = (backgroundBarWidth / 2f) - movingElementHalfWidth;
         float minX = -(backgroundBarWidth / 2f) + movingElementHalfWidth;
 
-        bool directionChanged = false;
         if (currentXPosition >= maxX)
         {
             currentXPosition = maxX;
             moveDirection = -1; // 오른쪽 끝에 닿으면 왼쪽으로
-            directionChanged = true;
         }
         else if (currentXPosition <= minX)
         {
             currentXPosition = minX;
             moveDirection = 1; // 왼쪽 끝에 닿으면 오른쪽으로
-            directionChanged = true;
         }
 
-        if (directionChanged)
-        {
-            currentTraversals++;
-            if (currentTraversals >= maxTraversals)
-            {
-                EndGame(false);
-                return; 
-            }
-        }
-        
         movingElement.anchoredPosition = new Vector2(currentXPosition, 0); // Y는 0으로 고정
     }
 
@@ -123,6 +107,17 @@ public class MinigameManager : MonoBehaviour
         else
         {
             EndGame(false); // 실패
+        }
+    }
+
+    void UpdateGameTimer()
+    {
+        gameTimer -= Time.deltaTime;
+        if (gameTimer <= 0)
+        {
+            gameTimer = 0;
+            // 시간이 다 되었는데 성공하지 못했으면 실패 처리
+            EndGame(false);
         }
     }
 
