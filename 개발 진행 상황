@@ -1,0 +1,13 @@
+8/15
+  캐릭터 이동 및 전투 시스템 구현.
+    MinigameManager 구현.(MovingElement가 SuccessZone의 위에 있을 때 Space키를 누르면 성공)
+
+
+8/16 
+  전투 시스템 구현.
+    스킬 선택 -> 시작 버튼 클릭 시 MinigameManager 실행
+
+
+문제점 : 시작버튼을 두 번 눌러야지만 MinigameManager가 실행되는 버그. (아직수정못함)
+
+
