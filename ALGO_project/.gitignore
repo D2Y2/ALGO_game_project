@@ -14,7 +14,7 @@
 *.booproj
 *.svd
 *.pdb
-*.meta
+#*.meta 삭제
 *.log
 *.txt
 *.tmp
@@ -36,7 +36,7 @@ build/
 UserSettings/
 MemoryCaptures/
 AssetStoreTools/
-Packages/
+#Packages/ 삭제
 LocalPackages/
 
 # Optional: Uncomment if you don't want to track the Generated folder created by DOTS/ECS
