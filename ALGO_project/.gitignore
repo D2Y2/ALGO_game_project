@@ -1,42 +1,34 @@
-# Git ignore for Unity projects
-# Created by https://www.toptal.com/developers/gitignore/api/unity
+# === Unity 기본 무시 대상 ===
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
 
-# Unity
-.DS_Store
+# === IDE/에디터 관련 ===
+.vs/
 *.csproj
 *.unityproj
 *.sln
 *.suo
+*.tmp
 *.user
 *.userprefs
 *.pidb
 *.booproj
 *.svd
-*.pdb
-*.meta
-*.log
-*.txt
-*.tmp
 
-# Visual Studio
-.vs/
-bin/
-obj/
+# === 기타 자동 생성 파일 ===
+*.apk
+*.aab
+*.unitypackage
 
-# Rider
+# === Rider / JetBrains ===
 .idea/
+*.iml
 
-# Library and Temp
-Library/
-Temp/
-obj/
-Build/
-build/
-UserSettings/
-MemoryCaptures/
-AssetStoreTools/
-Packages/
-LocalPackages/
-
-# Optional: Uncomment if you don't want to track the Generated folder created by DOTS/ECS
-# Generated/
+# === OS 자동 생성 ===
+.DS_Store
+Thumbs.db
