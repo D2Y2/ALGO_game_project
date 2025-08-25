@@ -1,4 +1,6 @@
+#if false
 using Mono.Data.Sqlite;
+using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
@@ -116,3 +118,4 @@ public class SQLiteManager : MonoBehaviour
         return data;
     }
 }
+#endif
